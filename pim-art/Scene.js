@@ -12,18 +12,12 @@ export default class Scene {
     */
     art;
 
-    /**
-    * @type {boolean}
-    */
-    isInitialized;
-
     constructor() {
         if (new.target === Scene) {
             throw new TypeError("Cannot construct Scene instances directly");
         }
 
         this.art = null; // Will be set by the Art class on initialization. 
-        this.isInitialized = false; // Will be set by the Scene subclass on initialization.
     }
 
     async init(){

@@ -129,6 +129,8 @@ export default class Art {
         }, 1000 * 60 * 10); // every 10 minutes
     }
 
+    
+
 
     /**
      * @param {boolean} val
@@ -162,10 +164,6 @@ export default class Art {
 
             if (this.#isPlaying) {
 
-                if (!this.config.play.isInitialized) {
-                    await this.config.play.init();
-                }
-
                 const currentTransform = ctx.getTransform();
                 ctx.clearRect(0 - currentTransform.e, 0 - currentTransform.f, this.width, this.height);
 
@@ -177,10 +175,6 @@ export default class Art {
                 }
 
             } else {
-
-                if (!this.config.pause.isInitialized) {
-                    await this.config.pause.init();
-                }
 
                 const currentTransform = ctx.getTransform();
 
@@ -214,6 +208,9 @@ export default class Art {
 
         this.config.play.art = this;
         this.config.pause.art = this;
+
+        await this.config.pause.init();
+        await this.config.play.init();
 
         addEventListener("keydown", (e) => {
 

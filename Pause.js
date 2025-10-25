@@ -10,13 +10,17 @@ export default class Pause extends Scene {
     }
 
     async init() {
-        this.isInitialized = true;
     }
 
     /**
      * @param {CanvasRenderingContext2D} ctx 
      */
     draw(ctx) {
+       
+
+        ctx.fillStyle ="pink";
+
+        ctx.fillRect(0, 0, this.art.width, this.art.height);
     }
 
 }
