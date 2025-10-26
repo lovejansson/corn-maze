@@ -2,6 +2,7 @@ import { Scene } from "./pim-art/index.js";
 import { BASE_URL } from "./config.js";
 import { createMazePrim } from "./maze.js";
 import { night } from "./canvasManipulation.js"
+import { isNight } from "./index.js"
 
 export default class Play extends Scene {
 
@@ -10,20 +11,13 @@ export default class Play extends Scene {
     }
 
     async init() {
-        this.art.images.add("background", `${BASE_URL}assets/images/dirt-background.png`);
-        this.art.images.add("corn", `${BASE_URL}assets/images/corn.png`);
-        this.art.images.add("scare-crow", `${BASE_URL}assets/images/scare-crow.png`);
-        this.art.images.load();
-        this.isNight = false;
-
-        document.querySelector("button").addEventListener("click", () => {
-            this.isNight = !this.isNight
-        })
+        // this.art.images.add("background", `${BASE_URL}assets/images/dirt-background.png`);
+        // this.art.images.add("corn", `${BASE_URL}assets/images/corn.png`);
+        // this.art.images.add("scare-crow", `${BASE_URL}assets/images/scare-crow.png`);
+        // await this.art.images.load();
 
 
         this.maze = createMazePrim(7, 19, {start: { row: 2, col: 8}, rows: 2, cols: 3});
-
-        console.log(this.maze)
     }
 
     start() {
@@ -44,10 +38,10 @@ export default class Play extends Scene {
      * @param {CanvasRenderingContext2D} ctx 
      */
     draw(ctx) {
-
+     
         ctx.drawImage(this.art.images.get("background"), 0, 0);
 
-        // Draw the corn 
+        // Draw the corn maze
 
         for (let r = 0; r < 12; ++r) {
 
@@ -58,6 +52,7 @@ export default class Play extends Scene {
 
         const colDiff = this.art.tileSize / 2;
         const rowDiff = 0;
+    
 
         for (let r = 0; r < this.maze.length; ++r) {
             for (let c = 0; c < this.maze[r].length; ++c) {
@@ -76,12 +71,10 @@ export default class Play extends Scene {
 
         ctx.drawImage(this.art.images.get("scare-crow"), this.art.tileSize * 19, this.art.tileSize * 9)
 
-        if (this.isNight) {
+        if (isNight) {
             night(ctx);
         }
-
-
-
+ 
     }
 
 }

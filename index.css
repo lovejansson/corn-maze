@@ -53,3 +53,14 @@ main {
     width: 100%;
     image-rendering: pixelated;
 }
+
+#btn-day-night {
+    position: absolute;
+    z-index: 1;
+    background: none;
+    border: none;
+    color: #e0e0e6;
+    bottom: 8px;
+    left: 8px;
+    cursor: pointer;
+}
