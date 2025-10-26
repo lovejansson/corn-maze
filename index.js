@@ -12,7 +12,8 @@ const art = new Art({
     height: 360,
     tileSize: 16,
     canvas: "#canvas-art",
-    displayGrid: false
+    displayGrid: false,
+
 });
 
 

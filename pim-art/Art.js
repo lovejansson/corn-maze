@@ -17,7 +17,6 @@ import { debug } from "../index.js";
  * @property {Scene} pause The pause scene
  * @property {string} canvas The canvas css selector
  * @property {number} [frameRate] The frame rate of update cycle
- * @property {boolean} [willReadFrequently] Attribute for CanvasRendering2Dcontext see [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getContextAttributes) for reference.
  * @property {boolean} displayGrid Display tile grid during development 
  * @property {{}} [services] Custom services to the art instance
  */
@@ -264,10 +263,6 @@ export default class Art {
 
         canvas.width = this.width;
         canvas.height = this.height;
-
-        if (this.config.willReadFrequently) {
-            ctx.willReadFrequently = this.config.willReadFrequently; // Enable willReadFrequently for better performance when reading pixel data frequently.
-        }
 
         ctx.imageSmoothingEnabled = true; // For smooth scaling of images so that pixel art doesn't look blurry.
 
